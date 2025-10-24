@@ -1,18 +1,19 @@
-JENKINSFILE
 pipeline {
     agent any
 
+   
     environment {
-        PATH = "/opt/homebrew/bin:/Users/pardhasaradhireddy/maven/bin:${env.PATH}"
-        TOMCAT_HOME = "/Users/pardhasaradhireddy/apache-tomcat-10.1.43"
-    }
+    PATH = "/opt/homebrew/bin:/Users/pardhasaradhireddy/maven/bin:${env.PATH}"
+    TOMCAT_HOME = "/Users/pardhasaradhireddy/Desktop/apache-tomcat-10.1.43"
+}
+
 
     stages {
 
         // ===== FRONTEND BUILD =====
         stage('Build Frontend') {
             steps {
-                dir('FRONTED') {
+                dir('FRONTEND') {
                     sh '''
                     npm install
                     npm run build
@@ -80,9 +81,13 @@ pipeline {
             }
         }
     }
+
+    post {
+        success {
+            echo 'Deployment Successful!'
+        }
+        failure {
+            echo 'Pipeline Failed.'
+        }
+    }
 }
-
-
-
-
-//DEVEOPS-EXAM-2300032590
