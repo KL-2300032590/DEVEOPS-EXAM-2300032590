@@ -65,7 +65,7 @@ pipeline {
                 rm -f "$WEBAPPS_PATH/voterbackend.war"
                 rm -rf "$WEBAPPS_PATH/voterbackend"
 
-                cp BACKEND/target/*.war "$WEBAPPS_PATH/"
+                cp springbootbackend/target/*.war "$WEBAPPS_PATH/"
                 '''
             }
         }
